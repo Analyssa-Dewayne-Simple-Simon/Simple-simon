@@ -1,6 +1,7 @@
 /* CSS FILE FOR SIMPLE SIMON GAME */
 #container {
 	border: 1px solid black;
+	background-color: black;
 }
 
 .box {

@@ -13,11 +13,13 @@ function random(){
 
 function flashColors(){
 	usedColors.forEach(function(element,index){
-		$(element).animate({
-			opacity: "1",	
-		}, 1000).animate({
-			opacity: "0.5"
-		}, 1000);
+		setTimeout(function() {	
+				$(element).animate({
+					opacity: "1",	
+				}, 800).animate({
+					opacity: "0.5"
+				}, 200);
+			}, index * 1000);
 	});
 		console.log(usedColors);
 }
