@@ -17,15 +17,19 @@
 	background-color: red;
 	float : right;
 	margin-top: 10px;
+	opacity: .5;
 }
 #blue {
 	background-color: blue;
 	margin-top: 10px;
+	opacity: .5;
 }
 #yellow {
 	background-color: yellow;
 	float: right;
+	opacity: .5;
 }
 #green {
 	background-color: green;
+	opacity: .5;
 }
