@@ -3,6 +3,7 @@
 
 var colorBoxes = ["#red", "#blue", "#green", "#yellow"];
 var usedColors = [];
+var playerColors = 0;
 
 
 function random(){
@@ -28,6 +29,16 @@ $("#start").click(function () {
 	random();
 	flashColors();
 });
+
+$(".box").click(function (){
+	var playerClick = "#" + this.id;
+	playerColors += playerClick;
+	console.log(playerColors);
+
+});
+
+	
+
 
 /* 
 1. Click start button
