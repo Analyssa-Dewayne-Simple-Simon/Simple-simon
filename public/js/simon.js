@@ -3,7 +3,7 @@
 
 var colorBoxes = ["#red", "#blue", "#green", "#yellow"];
 var usedColors = [];
-var playerColors = 0;
+var playerColors = [];
 
 
 function random(){
@@ -25,19 +25,60 @@ function flashColors(){
 		console.log(usedColors);
 }
 
+function flashPlayerColors(){
+	playerColors.forEach(function(element,index){
+		setTimeout(function() {	
+				$(element).animate({
+					opacity: "1",	
+				}, 800).animate({
+					opacity: "0.5"
+				}, 200);
+			}, index * 1000);
+	});
+}
+
 $("#start").click(function () {
 	random();
 	flashColors();
 });
 
-$(".box").click(function (){
+// Stores Colors that the Player Clicks
+$(".box").click(function (flashPlayerColors){
 	var playerClick = "#" + this.id;
-	playerColors += playerClick;
+	playerColors.push(playerClick);
 	console.log(playerColors);
-
 });
 
-	
+
+//Checks if playerColors Matches usedColors
+function doTheyMatch (){
+	if (playerColors.length === usedColors.length){
+		console.log("Matching is working!")
+	} else {
+		console.log("You lost! Try again!")
+		// newGame();
+	}
+console.log(doTheyMatch);
+};
+
+// Display current level
+// function displayLevel(){
+// 	$('#h2').text('Level: ' + this.index.length);
+// },
+
+
+//New Game start- clear out usedColors and playerColors	
+// function newGame() {
+// 	clearGame();
+// }
+
+// function clearGame() {
+// 	var usedColors = [];
+// 	var playerColors = 0;
+// }
+// --------------------------------------
+
+
 
 
 /* 
