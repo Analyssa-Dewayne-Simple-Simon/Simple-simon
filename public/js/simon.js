@@ -3,8 +3,8 @@
 
 var colorBoxes = ["#red", "#blue", "#green", "#yellow"];
 var usedColors = [];
-var playerColors = [];
-
+var playerClickIndex = 0;
+var level = 0;
 
 function random(){
 	var randomColor = Math.floor(Math.random() * colorBoxes.length);
@@ -25,17 +25,38 @@ function flashColors(){
 		console.log(usedColors);
 }
 
-function flashPlayerColors(){
-	playerColors.forEach(function(element,index){
-		setTimeout(function() {	
-				$(element).animate({
-					opacity: "1",	
-				}, 800).animate({
-					opacity: "0.5"
-				}, 200);
-			}, index * 1000);
-	});
-}
+// $("#red").click(function() {
+// 	$(this).animate({
+// 		opacity: "1",	
+// 	}, 800).animate({
+// 			opacity: "0.5"
+// 	}, 200);
+// });
+
+$(".box").click(function(id) {
+
+	$("#" + this.id).animate({
+		opacity: "1",	
+	}, 800).animate({
+			opacity: "0.5"
+	}, 200);
+});
+
+// $("#yellow").click(function() {
+// 	$(this).animate({
+// 		opacity: "1",	
+// 	}, 800).animate({
+// 			opacity: "0.5"
+// 	}, 200);
+// });
+
+// $("#green").click(function() {
+// 	$(this).animate({
+// 		opacity: "1",	
+// 	}, 800).animate({
+// 			opacity: "0.5"
+// 	}, 200);
+// });
 
 $("#start").click(function () {
 	random();
@@ -43,39 +64,38 @@ $("#start").click(function () {
 });
 
 // Stores Colors that the Player Clicks
-$(".box").click(function (flashPlayerColors){
+$(".box").click(function () {
 	var playerClick = "#" + this.id;
-	playerColors.push(playerClick);
-	console.log(playerColors);
+	if (playerClick === usedColors[playerClickIndex]){
+		playerClickIndex += 1;
+		console.log(playerClick + " " + playerClickIndex);
+		if(playerClickIndex === usedColors.length){
+			playerClickIndex = 0;
+			level++;
+			displayLevel();
+			setTimeout(function () {
+				random();
+				flashColors();
+			}, 1000);
+		}	
+	} else {
+		alert("Game Over!");
+		clearGame();
+	}
 });
 
 
-//Checks if playerColors Matches usedColors
-function doTheyMatch (){
-	if (playerColors.length === usedColors.length){
-		console.log("Matching is working!")
-	} else {
-		console.log("You lost! Try again!")
-		// newGame();
-	}
-console.log(doTheyMatch);
-};
-
 // Display current level
-// function displayLevel(){
-// 	$('#h2').text('Level: ' + this.index.length);
-// },
+function displayLevel(){
+	$('h2').text('Level: ' + level);
+}
 
-
-//New Game start- clear out usedColors and playerColors	
-// function newGame() {
-// 	clearGame();
-// }
-
-// function clearGame() {
-// 	var usedColors = [];
-// 	var playerColors = 0;
-// }
+// Clear out Game and start New Game
+function clearGame() {
+	usedColors = [];
+	playerClickIndex = 0;
+	$('h2').text('Level: 0');
+}
 // --------------------------------------
 
 
