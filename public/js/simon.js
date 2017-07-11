@@ -25,16 +25,7 @@ function flashColors(){
 		console.log(usedColors);
 }
 
-// $("#red").click(function() {
-// 	$(this).animate({
-// 		opacity: "1",	
-// 	}, 800).animate({
-// 			opacity: "0.5"
-// 	}, 200);
-// });
-
 $(".box").click(function(id) {
-
 	$("#" + this.id).animate({
 		opacity: "1",	
 	}, 800).animate({
@@ -42,21 +33,6 @@ $(".box").click(function(id) {
 	}, 200);
 });
 
-// $("#yellow").click(function() {
-// 	$(this).animate({
-// 		opacity: "1",	
-// 	}, 800).animate({
-// 			opacity: "0.5"
-// 	}, 200);
-// });
-
-// $("#green").click(function() {
-// 	$(this).animate({
-// 		opacity: "1",	
-// 	}, 800).animate({
-// 			opacity: "0.5"
-// 	}, 200);
-// });
 
 $("#start").click(function () {
 	random();
