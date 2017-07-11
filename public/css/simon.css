@@ -1,12 +1,21 @@
 /* CSS FILE FOR SIMPLE SIMON GAME */
 body {
-	background-color: #D3D3D3;
+	background-color: #f2ebe6;
+	font-family: 'Quicksand', sans-serif;
+}
+.btn-large{
+	background-color: #C4E356;
+	color: white;
+}
+h1{
+	font-size: 55px;
 }
 #top{
 	width: 350px;
 }
 #bottom{
-	width: 160px;
+	width: 140px;
+	padding: 5px;
 }
 .currentLevel {
 	color: white;
@@ -14,7 +23,6 @@ body {
 .box {
 	height: 150px;
 	width: 150px;
-	border: 2px solid black;
 	margin-top: 10px;
 	margin-right: 10px;
 	float: left;
@@ -22,23 +30,23 @@ body {
 	position: relative;
 }
 #red {
-	background-color: red;
+	background-color: #00bfaf;
 	opacity: .5;
 	border-radius: 60px;
 }
 #blue {
-	background-color: blue;
+	background-color: #fd8a5e;
 	opacity: .5;
 	border-radius: 60px;
 }
 #yellow {
-	background-color: yellow;
+	background-color: #e0e300;
 	opacity: .5;
 	clear: left;
 	border-radius: 60px;
 }
 #green {
-	background-color: green;
+	background-color: #ff598f;
 	opacity: .5;
 	border-radius: 60px;
 }
