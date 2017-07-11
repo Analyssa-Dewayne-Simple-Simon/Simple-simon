@@ -3,6 +3,7 @@
 
 var colorBoxes = ["#red", "#blue", "#green", "#yellow"];
 var usedColors = [];
+var playerClick = "";
 var playerClickIndex = 0;
 var level = 0;
 
@@ -28,7 +29,7 @@ function flashColors(){
 $(".box").click(function(id) {
 	$("#" + this.id).animate({
 		opacity: "1",	
-	}, 800).animate({
+	}, 500).animate({
 			opacity: "0.5"
 	}, 200);
 });
@@ -52,7 +53,7 @@ $(".box").click(function () {
 			setTimeout(function () {
 				random();
 				flashColors();
-			}, 1000);
+			}, 1500);
 		}	
 	} else {
 		alert("Game Over!");
@@ -60,22 +61,24 @@ $(".box").click(function () {
 	}
 });
 
-
 // Display current level
 function displayLevel(){
-	$('h2').text('Level: ' + level);
+	$('#currentLevel').text('Level: ' + level);
 }
 
 // Clear out Game and start New Game
 function clearGame() {
+	level = 0;
 	usedColors = [];
+	playerClick = "";
 	playerClickIndex = 0;
-	$('h2').text('Level: 0');
+	$('#currentLevel').text('Level: 0');
 }
 // --------------------------------------
 
-
-
+$("#reset").click(function () {
+	clearGame();
+});
 
 /* 
 1. Click start button
@@ -101,34 +104,7 @@ function randomSequence(){
  5. After 1st round,
  cycle back through the function, show the 1st box
  and then generate a random 2nd color box
-
-
-
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
 
 	
 })();
