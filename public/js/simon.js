@@ -3,16 +3,23 @@
 
 var colorBoxes = ["#red", "#blue", "#green", "#yellow"];
 var usedColors = [];
-var playerClick = "";
+// Stores the color array that has been chosen randomly
+var playerColors = "";
 var playerClickIndex = 0;
+// Stores the index of when the player clicks
 var level = 0;
+// Stores what level of the game you are on
 
+
+//Generates a Random Color from the Array of colorBoxes
 function random(){
 	var randomColor = Math.floor(Math.random() * colorBoxes.length);
 	usedColors.push(colorBoxes[randomColor]);
 	return usedColors;
 };
 
+/*The For Each loop goes through our array of colorBoxes and lights it up
+and goes back to original opacity whenever the random color is generated */
 function flashColors(){
 	usedColors.forEach(function(element,index){
 		setTimeout(function() {	
@@ -26,6 +33,7 @@ function flashColors(){
 		console.log(usedColors);
 }
 
+/* Animates whenever it's the player's turn to click */
 $(".box").click(function(id) {
 	$("#" + this.id).animate({
 		opacity: "1",	
@@ -34,21 +42,27 @@ $(".box").click(function(id) {
 	}, 200);
 });
 
-
+/*When you click the start button, the random color generator and flashing begin*/
 $("#start").click(function () {
 	random();
 	flashColors();
 });
 
-// Stores Colors that the Player Clicks
+/* Stores Colors that the Player Clicks and compares against the usedColors index */
 $(".box").click(function () {
-	var playerClick = "#" + this.id;
-	if (playerClick === usedColors[playerClickIndex]){
+	//click event when you click any of the 4 boxes
+	var playerColors = "#" + this.id;
+	if (playerColors === usedColors[playerClickIndex]){
+	//if playerColor equals usedColor(playercolor) then add 1 to the index. 
+	//it is counting how many times the user is clicking
 		playerClickIndex += 1;
-		console.log(playerClick + " " + playerClickIndex);
+		console.log(playerColors + " " + playerClickIndex);
 		if(playerClickIndex === usedColors.length){
+			//if indexes match
 			playerClickIndex = 0;
+			//Move to to next level
 			level++;
+			//Add 1 to current level
 			displayLevel();
 			setTimeout(function () {
 				random();
@@ -70,11 +84,11 @@ function displayLevel(){
 function clearGame() {
 	level = 0;
 	usedColors = [];
-	playerClick = "";
+	playerColors = "";
 	playerClickIndex = 0;
 	$('#currentLevel').text('Level: 0');
 }
-// --------------------------------------
+// Reset button
 
 $("#reset").click(function () {
 	clearGame();
