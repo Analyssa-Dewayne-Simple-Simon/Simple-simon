@@ -1,16 +1,8 @@
 (function(){
 "use strict";
-// 1. Click start button
+//  1. Click start button
 //  -display current round 
 //  -generate the 1st random color box
-
-// function startGame(){
-// 	var colorBoxes = [red, blue, green, yellow];
-//  	var randomColor = Math.random(colorBoxes.length);
-
-// function randomSequence(){
-// 	return randomColor;
-// 	}
 
 //  2. Dislay the 1st random color box in bright color
 //  and then opacity back to 0.5
@@ -71,6 +63,7 @@ $(".box").click(function(id) {
 $("#start").click(function () {
 	random();
 	flashColors();
+	$("#start").attr("disabled", true);
 });
 
 /* Stores Colors that the Player Clicks and compares against the usedColors index */
@@ -96,6 +89,7 @@ $(".box").click(function () {
 		}	
 	} else {
 		clearGame();
+		showRyan();
 	}
 });
 
@@ -111,17 +105,24 @@ function clearGame() {
 	playerColors = "";
 	playerClickIndex = 0;
 	$('#currentLevel').text('Level: 0');
+	// $('#youlost').show(3000);
+	// $('#ryanimg').show(3000);
+	// $('#youlost').hide(4000);
+	// $('#ryanimg').hide(4000);
+}
+// Reset button
+$("#reset").click(function () {
+	showRyan();
+	clearGame();
+	$("#start").attr("disabled", false);
+});
+
+function showRyan() {
 	$('#youlost').show(3000);
 	$('#ryanimg').show(3000);
 	$('#youlost').hide(4000);
 	$('#ryanimg').hide(4000);
 }
-// Reset button
 
-$("#reset").click(function () {
-	clearGame();
-});
- 
 
-	
 })();
