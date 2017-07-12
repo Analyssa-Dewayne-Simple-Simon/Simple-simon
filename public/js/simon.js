@@ -87,6 +87,10 @@ function clearGame() {
 	playerColors = "";
 	playerClickIndex = 0;
 	$('#currentLevel').text('Level: 0');
+	$('#youlost').show(3000);
+	$('#ryanimg').show(3000);
+	$('#youlost').hide(4000);
+	$('#ryanimg').hide(4000);
 }
 // Reset button
 
@@ -94,6 +98,11 @@ $("#reset").click(function () {
 	clearGame();
 });
 
+//fade in for div when game is over
+// $('#youlost').click(function(){
+// 	$("this").fadeIn(4000);
+// 	$("this").fadeIn(4000);
+// }
 /* 
 1. Click start button
  -display current round 

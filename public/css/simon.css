@@ -10,6 +10,24 @@ body {
 h1{
 	font-size: 55px;
 }
+#youlost{
+	display: none;
+	background-color:#00bfaf;
+	width: 320px;
+	height: 350px;
+	position: fixed;
+	border-radius: 60px;
+	}
+
+#ryanimg{
+	display: none;
+	width: 320px;
+	height: 350px;
+	position: fixed;
+	border-radius: 60px;
+	z-index:2;
+}
+
 #top{
 	width: 350px;
 }
@@ -31,22 +49,22 @@ h1{
 }
 #red {
 	background-color: #00bfaf;
-	opacity: .5;
+	opacity: .4;
 	border-radius: 60px;
 }
 #blue {
 	background-color: #fd8a5e;
-	opacity: .5;
+	opacity: .4;
 	border-radius: 60px;
 }
 #yellow {
 	background-color: #e0e300;
-	opacity: .5;
+	opacity: .4;
 	clear: left;
 	border-radius: 60px;
 }
 #green {
 	background-color: #ff598f;
-	opacity: .5;
+	opacity: .4;
 	border-radius: 60px;
 }
