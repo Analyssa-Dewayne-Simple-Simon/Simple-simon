@@ -1,5 +1,30 @@
 (function(){
-	"use strict";
+"use strict";
+// 1. Click start button
+//  -display current round 
+//  -generate the 1st random color box
+
+// function startGame(){
+// 	var colorBoxes = [red, blue, green, yellow];
+//  	var randomColor = Math.random(colorBoxes.length);
+
+// function randomSequence(){
+// 	return randomColor;
+// 	}
+
+//  2. Dislay the 1st random color box in bright color
+//  and then opacity back to 0.5
+
+//  3. User clicks
+
+//  4. Check if user click = random color box that was
+//  generated
+
+//  5. After 1st round,
+//  cycle back through the function, show the 1st box
+//  and then generate a random 2nd color box
+// */
+
 
 var colorBoxes = ["#red", "#blue", "#green", "#yellow"];
 var usedColors = [];
@@ -11,7 +36,7 @@ var level = 0;
 // Stores what level of the game you are on
 
 
-//Generates a Random Color from the Array of colorBoxes
+// Generates a Random Color from the Array of colorBoxes
 function random(){
 	var randomColor = Math.floor(Math.random() * colorBoxes.length);
 	usedColors.push(colorBoxes[randomColor]);
@@ -33,7 +58,7 @@ function flashColors(){
 		console.log(usedColors);
 }
 
-/* Animates whenever it's the player's turn to click */
+/* Animates whenever the player clicks */
 $(".box").click(function(id) {
 	$("#" + this.id).animate({
 		opacity: "1",	
@@ -42,7 +67,7 @@ $(".box").click(function(id) {
 	}, 200);
 });
 
-/*When you click the start button, the random color generator and flashing begin*/
+/* When you click the start button, the random color generator and flashing begin*/
 $("#start").click(function () {
 	random();
 	flashColors();
@@ -70,7 +95,6 @@ $(".box").click(function () {
 			}, 1500);
 		}	
 	} else {
-		alert("Game Over!");
 		clearGame();
 	}
 });
@@ -97,37 +121,7 @@ function clearGame() {
 $("#reset").click(function () {
 	clearGame();
 });
-
-//fade in for div when game is over
-// $('#youlost').click(function(){
-// 	$("this").fadeIn(4000);
-// 	$("this").fadeIn(4000);
-// }
-/* 
-1. Click start button
- -display current round 
- -generate the 1st random color box
-
-function startGame(){
-	var colorBoxes = [red, blue, green, yellow];
- 	var randomColor = Math.random(colorBoxes.length);
-
-function randomSequence(){
-	return randomColor;
-	}
-
- 2. Dislay the 1st random color box in bright color
- and then opacity back to 0.5
-
- 3. User clicks
-
- 4. Check if user click = random color box that was
- generated
-
- 5. After 1st round,
- cycle back through the function, show the 1st box
- and then generate a random 2nd color box
-*/
+ 
 
 	
 })();
