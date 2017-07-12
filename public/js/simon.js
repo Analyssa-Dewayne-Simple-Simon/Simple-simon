@@ -26,7 +26,6 @@ var playerClickIndex = 0;
 // Stores the index of when the player clicks
 var level = 0;
 // Stores what level of the game you are on
-
 var gameOverSound = document.createElement('audio');
 	gameOverSound.setAttribute('src', '/sound/Price-is-right-losing-horn.mp3');
 
@@ -45,11 +44,36 @@ function flashColors(){
 				$(element).animate({
 					opacity: "1",	
 				}, 800).animate({
-					opacity: "0.5"
+					opacity: "0.4"
 				}, 200);
 			}, index * 1000);
 	});
 		console.log(usedColors);
+}
+
+// Display current level
+function displayLevel(){
+	$('#currentLevel').text('Level: ' + level);
+}
+
+// Clear out Game and start New Game
+function clearGame() {
+	level = 0;
+	usedColors = [];
+	playerColors = "";
+	playerClickIndex = 0;
+	$('#currentLevel').text('Level: 0');
+}
+
+function showRyan() {
+	$('#youlost').show(3000);
+	$('#ryanimg').show(3000);
+	$('#youlost').hide(4000);
+	$('#ryanimg').hide(4000);
+}
+
+function playSound() {
+	gameOverSound.play();
 }
 
 /* Animates whenever the player clicks */
@@ -57,7 +81,7 @@ $(".box").click(function(id) {
 	$("#" + this.id).animate({
 		opacity: "1",	
 	}, 500).animate({
-			opacity: "0.5"
+			opacity: "0.4"
 	}, 200);
 });
 
@@ -96,39 +120,11 @@ $(".box").click(function () {
 	}
 });
 
-// Display current level
-function displayLevel(){
-	$('#currentLevel').text('Level: ' + level);
-}
-
-// Clear out Game and start New Game
-function clearGame() {
-	level = 0;
-	usedColors = [];
-	playerColors = "";
-	playerClickIndex = 0;
-	$('#currentLevel').text('Level: 0');
-	// $('#youlost').show(3000);
-	// $('#ryanimg').show(3000);
-	// $('#youlost').hide(4000);
-	// $('#ryanimg').hide(4000);
-}
 // Reset button
 $("#reset").click(function () {
 	clearGame();
 	$("#start").attr("disabled", false);
 });
-
-function showRyan() {
-	$('#youlost').show(3000);
-	$('#ryanimg').show(3000);
-	$('#youlost').hide(4000);
-	$('#ryanimg').hide(4000);
-}
-
-function playSound() {
-	gameOverSound.play();
-}
 
 
 
