@@ -1,7 +1,7 @@
 (function(){
 "use strict";
 //  1. Click start button
-//  -display current round 
+//  -display current round
 //  -generate the 1st random color box
 
 //  2. Dislay the 1st random color box in bright color
@@ -40,9 +40,9 @@ function random(){
 and goes back to original opacity whenever the random color is generated */
 function flashColors(){
 	usedColors.forEach(function(element,index){
-		setTimeout(function() {	
+		setTimeout(function() {
 				$(element).animate({
-					opacity: "1",	
+					opacity: "1",
 				}, 800).animate({
 					opacity: "0.4"
 				}, 200);
@@ -76,48 +76,56 @@ function playSound() {
 	gameOverSound.play();
 }
 
-/* Animates whenever the player clicks */
-$(".box").click(function(id) {
-	$("#" + this.id).animate({
-		opacity: "1",	
-	}, 500).animate({
-			opacity: "0.4"
-	}, 200);
-});
+function animateClickedBox() {
+	/* Animates whenever the player clicks */
+	$(".box").click(function(id) {
 
-/* When you click the start button, the random color generator and flashing begin*/
+		$("#" + this.id).animate({
+			opacity: "1",
+		}, 500).animate({
+			opacity: "0.4"
+		}, 200);
+	});
+}
+
+
+function playGame() {
+	/* Stores Colors that the Player Clicks and compares against the usedColors index */
+	$(".box").click(function () {
+		//click event when you click any of the 4 boxes
+		var playerColors = "#" + this.id;
+		if (playerColors === usedColors[playerClickIndex]){
+			//if playerColor equals usedColor(playercolor) then add 1 to the index.
+			//it is counting how many times the user is clicking
+			playerClickIndex += 1;
+			console.log(playerColors + " " + playerClickIndex);
+			if(playerClickIndex === usedColors.length){
+				//if indexes match
+				playerClickIndex = 0;
+				//Move to to next level
+				level++;
+				//Add 1 to current level
+				displayLevel();
+				setTimeout(function () {
+					random();
+					flashColors();
+				}, 1500);
+			}
+		} else {
+			playSound();
+			clearGame();
+			showRyan();
+		}
+	});
+}
+
+/* When you click the start button, runs the function to play the game*/
 $("#start").click(function () {
 	random();
 	flashColors();
+	animateClickedBox();
+	playGame();
 	$("#start").attr("disabled", true);
-});
-
-/* Stores Colors that the Player Clicks and compares against the usedColors index */
-$(".box").click(function () {
-	//click event when you click any of the 4 boxes
-	var playerColors = "#" + this.id;
-	if (playerColors === usedColors[playerClickIndex]){
-	//if playerColor equals usedColor(playercolor) then add 1 to the index. 
-	//it is counting how many times the user is clicking
-		playerClickIndex += 1;
-		console.log(playerColors + " " + playerClickIndex);
-		if(playerClickIndex === usedColors.length){
-			//if indexes match
-			playerClickIndex = 0;
-			//Move to to next level
-			level++;
-			//Add 1 to current level
-			displayLevel();
-			setTimeout(function () {
-				random();
-				flashColors();
-			}, 1500);
-		}	
-	} else {
-		playSound();
-		clearGame();
-		showRyan();
-	}
 });
 
 // Reset button
@@ -125,7 +133,5 @@ $("#reset").click(function () {
 	clearGame();
 	$("#start").attr("disabled", false);
 });
-
-
 
 })();
