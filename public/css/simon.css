@@ -1,6 +1,7 @@
 /* CSS FILE FOR SIMPLE SIMON GAME */
 body {
 	background-color: #f2ebe6;
+	background-image: url("/img/symphony.png");
 	font-family: 'Quicksand', sans-serif;
 }
 .btn-large{
@@ -18,7 +19,6 @@ h1{
 	position: fixed;
 	border-radius: 60px;
 	}
-
 #ryanimg{
 	display: none;
 	width: 320px;
@@ -27,7 +27,6 @@ h1{
 	border-radius: 60px;
 	z-index:2;
 }
-
 #top{
 	width: 350px;
 }
@@ -45,26 +44,20 @@ h1{
 	margin-right: 10px;
 	float: left;
 	padding:0;
+	opacity: .4;
+	border-radius: 60px;
 	position: relative;
 }
 #red {
 	background-color: #00bfaf;
-	opacity: .4;
-	border-radius: 60px;
 }
 #blue {
 	background-color: #fd8a5e;
-	opacity: .4;
-	border-radius: 60px;
 }
 #yellow {
 	background-color: #e0e300;
-	opacity: .4;
 	clear: left;
-	border-radius: 60px;
 }
 #green {
 	background-color: #ff598f;
-	opacity: .4;
-	border-radius: 60px;
 }

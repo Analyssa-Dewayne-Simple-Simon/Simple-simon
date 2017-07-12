@@ -27,6 +27,8 @@ var playerClickIndex = 0;
 var level = 0;
 // Stores what level of the game you are on
 
+var gameOverSound = document.createElement('audio');
+	gameOverSound.setAttribute('src', '/sound/Price-is-right-losing-horn.mp3');
 
 // Generates a Random Color from the Array of colorBoxes
 function random(){
@@ -88,6 +90,7 @@ $(".box").click(function () {
 			}, 1500);
 		}	
 	} else {
+		playSound();
 		clearGame();
 		showRyan();
 	}
@@ -112,7 +115,6 @@ function clearGame() {
 }
 // Reset button
 $("#reset").click(function () {
-	showRyan();
 	clearGame();
 	$("#start").attr("disabled", false);
 });
@@ -123,6 +125,11 @@ function showRyan() {
 	$('#youlost').hide(4000);
 	$('#ryanimg').hide(4000);
 }
+
+function playSound() {
+	gameOverSound.play();
+}
+
 
 
 })();
